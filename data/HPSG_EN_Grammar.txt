@@ -1,0 +1,3 @@
+NP -> DetP Nbar
+<NP> = hd-specifier-ph
+

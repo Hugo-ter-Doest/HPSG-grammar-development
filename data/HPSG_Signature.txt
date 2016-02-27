@@ -109,13 +109,13 @@ Type string (BOTTOM)
 // Main type
 Type sign (BOTTOM) ->
 [sign
- PHON: phonstring
  SYNSEM: synsem
 ]
 
 // Sign for words
 Type word (sign) ->
 [word
+ PHON: phonstring
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
@@ -135,6 +135,7 @@ Type dtrs (BOTTOM) ->
 // Sign for phrases
 Type phrase (sign) ->
 [phrase
+ PHON: list-phonstring
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
@@ -196,7 +197,7 @@ Type hd-subject-ph (hd-valence-ph) ->
           ]
  DTRS: [dtrs
         HEAD-DTR: [phrase
-                   PHON: [2] phonstring
+                   PHON: [2] list-phonstring
                    SYNSEM: [synsem
                             LOC: [local
                                   CAT: [cat
@@ -212,7 +213,7 @@ Type hd-subject-ph (hd-valence-ph) ->
                   ]
         NON-HD-DTRS: [list
                       FIRST: [sign
-                              PHON: [1] phonstring
+                              PHON: [1] list-phonstring
                               SYNSEM: [5] BOTTOM
                              ]
                       REST: elist

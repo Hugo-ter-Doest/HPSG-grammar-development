@@ -14,7 +14,7 @@ var signatureFile = base + 'HPSG_Signature.txt';
 var lexiconFile = base + 'HPSG_Lexicon.txt';
 var grammarFile = base + 'HPSG_Grammar.txt';
 var sentencesFile = base + 'HPSG_Sentences.txt';
-var resultsFile = base + 'DU_Results.txt';
+//var resultsFile = base + 'DU_Results.txt';
 
 // Load signature
 var text = fs.readFileSync(signatureFile, 'utf8');
@@ -29,6 +29,7 @@ text = fs.readFileSync(lexiconFile, 'utf8');
 var lexicon = chartParsers.LexiconParser.parse(text, {
   signature: signature
 });
+
 
 // Load grammar
 text = fs.readFileSync(grammarFile, 'utf8');
