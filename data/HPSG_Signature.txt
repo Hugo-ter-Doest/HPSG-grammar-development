@@ -115,7 +115,6 @@ Type sign (BOTTOM) ->
 // Sign for words
 Type word (sign) ->
 [word
- PHON: phonstring
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
@@ -135,7 +134,6 @@ Type dtrs (BOTTOM) ->
 // Sign for phrases
 Type phrase (sign) ->
 [phrase
- PHON: list-phonstring
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
