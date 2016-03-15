@@ -176,14 +176,7 @@ Type hd-filler-ph (hd-nexus-ph)
 
 Type hd-subject-ph (hd-valence-ph) ->
 [hd-subject-ph
- // PHON: [1] + [2]
- PHON: [list-phonstring
-        FIRST: [1]
-        REST: [list-phonstring
-               FIRST: [2]
-               REST: elist-phonstring
-              ]
-       ]
+ PHON: [1] + [2]
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
@@ -221,13 +214,7 @@ Type hd-subject-ph (hd-valence-ph) ->
 
 Type hd-specifier-ph (hd-valence-ph) ->
 [hd-specifier-ph
- PHON: [list-phonstring
-        FIRST: [1]
-        REST: [list-phonstring
-               FIRST: [2]
-               REST: list-phonstring
-              ]
-       ]
+ PHON: [1] + [2]
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
