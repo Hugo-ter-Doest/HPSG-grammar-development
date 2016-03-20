@@ -1,5 +1,5 @@
 // HPSG Signature based on introduction to HPSG by Steve Harlow
-// (c) 2015 Hugo W.L. ter Doest
+// (c) 2016 Hugo W.L. ter Doest
 
 // Head type hierarchy
 Type head (BOTTOM)
@@ -27,54 +27,14 @@ Type boolean(BOTTOM)
 Type true(boolean)
 Type false (boolean)
 
-// Lists of BOTTOM
-Type list (BOTTOM)
-// Empty list
-Type elist (list)
-// Non-empty list
-Type nelist (list) ->
-[nelist
- FIRST: BOTTOM
- REST: list
-]
-
-Type phonstring (BOTTOM)
-
-// List of phonstring
-Type list-phonstring (list)
-// Empty list
-Type elist-phonstring (list-phonstring)
-// Non-empty list
-Type nelist-phonstring (list-phonstring) ->
-[nelist-phonstring
- FIRST: phonstring
- REST: list-phonstring
-]
-
-// Concatenation of lists: elements are lists, we do not have real concatenation
-Type list-concat (list)
-Type elist-concat (list-concat)
-Type nelist-concat (list-concat) ->
-[nelist-concat
- FIRST: list
- REST: list-concat
-]
-
 Type cat(BOTTOM) ->
 [cat
  HEAD: head
  LEX: boolean
- SUBJ: [1] list-synsem
- SPR: [2] list-synsem
- COMPS: [3] list-synsem
- // ARG-STR: [1] + [2] + [3]
- ARG-STR: [list
-           FIRST: [1]
-           REST: [list
-                  FIRST: [2]
-                  REST: [3]
-                 ]
-          ]
+ SUBJ: [1] LIST
+ SPR: [2] LIST
+ COMPS: [3] LIST
+ ARG-STR: [1] + [2] + [3]
 ]
 
 Type content (BOTTOM)
@@ -91,17 +51,6 @@ Type synsem (BOTTOM) ->
 [synsem
  LOC: local
  NONLOC: non-local
-]
-
-// List of synsem
-Type list-synsem (list)
-// Empty list
-Type elist-synsem (list-synsem)
-// Non-empty list
-Type nelist-synsem (list-synsem) ->
-[nelist-synsem
- FIRST: synsem
- REST: list-synsem
 ]
 
 Type string (BOTTOM)
@@ -128,7 +77,7 @@ Type word (sign) ->
 Type dtrs (BOTTOM) ->
 [dtrs
  HEAD-DTR: sign
- NON-HD-DTRS: list
+ NON-HD-DTRS: LIST
 ]
 
 // Sign for phrases
@@ -165,7 +114,7 @@ Type headed-ph (phrase) ->
                                  ]
                            ]
                   ]
-        NON-HD-DTRS: list
+        NON-HD-DTRS: LIST
        ]
 ]
 
@@ -180,7 +129,7 @@ Type hd-subject-ph (hd-valence-ph) ->
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
-                      SUBJ: elist
+                      SUBJ: <>
                       SPR: [3]
                       COMPS: [4]
                      ]
@@ -188,26 +137,23 @@ Type hd-subject-ph (hd-valence-ph) ->
           ]
  DTRS: [dtrs
         HEAD-DTR: [phrase
-                   PHON: [2] list-phonstring
+                   PHON: [2] LIST
                    SYNSEM: [synsem
                             LOC: [local
                                   CAT: [cat
-                                        SUBJ: [list
-                                               FIRST: [5]
-                                               REST: elist
-                                              ]
-                                        SPR: [3] elist
-                                        COMPS: [4] elist
+                                        SUBJ: <[5]>
+                                        SPR: [3] <>
+                                        COMPS: [4] <>
                                        ]
                                   ]
                             ]
                   ]
-        NON-HD-DTRS: [list
+        NON-HD-DTRS: [LIST
                       FIRST: [sign
-                              PHON: [1] list-phonstring
+                              PHON: [1] LIST
                               SYNSEM: [5] BOTTOM
                              ]
-                      REST: elist
+                      REST: <>
                      ]
        ]
 ]
@@ -218,7 +164,7 @@ Type hd-specifier-ph (hd-valence-ph) ->
  SYNSEM: [synsem
           LOC: [local
                 CAT: [cat
-                      SPR: elist
+                      SPR: <>
                      ]
                 ]
           ]
@@ -228,20 +174,17 @@ Type hd-specifier-ph (hd-valence-ph) ->
                    SYNSEM: [synsem
                             LOC: [local
                                   CAT: [cat
-                                        SPR: [list
-                                              FIRST: [3]
-                                              REST: elist
-                                             ]
+                                        SPR: <[3]>
                                        ]
                                   ]
                             ]
                   ]
-        NON-HD-DTRS: [list
+        NON-HD-DTRS: [LIST
                       FIRST: [phrase
                               PHON: [1]
                               SYNSEM: [3]
                              ]
-                      REST: elist
+                      REST: <>
                      ]
        ]
 ]
@@ -254,7 +197,7 @@ Type hd-complement-ph (hd-valence-ph) ->
                 CAT: [cat
                       SUBJ: [1]
                       SPR: [2]
-                      COMPS: elist
+                      COMPS: <>
                      ]
                 ]
           ]
@@ -265,12 +208,11 @@ Type hd-complement-ph (hd-valence-ph) ->
                                   CAT: [cat
                                         SUBJ: [1]
                                         SPR: [2]
-                                        COMPS: list
+                                        COMPS: LIST
                                        ]
                                   ]
                             ]
                   ]
-        NON-HD-DTRS: list
+        NON-HD-DTRS: LIST
        ]
 ]
-

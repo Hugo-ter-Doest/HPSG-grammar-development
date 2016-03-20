@@ -23,7 +23,7 @@ var signature = chartParsers.SignatureParser.parse(text, {
 });
 logger.debug(signature.printSpecification());
 
-
+/*
 // Load lexicon
 text = fs.readFileSync(lexiconFile, 'utf8');
 var lexicon = chartParsers.LexiconParser.parse(text, {
@@ -50,7 +50,7 @@ parser = parserFactory.createParser({
 // Load sentences
 text = fs.readFileSync(sentencesFile, 'utf8');
 var sentences = text.split('\n');
-
+*/
 
 // Load results; these are in a lexicon file
 /*
@@ -60,7 +60,7 @@ var results = chartParsers.LexiconParser.parse(text, {
 });
 */
 
-
+/*
 // Test sentences and compare to results
 sentences.forEach(function(sentence) {
   logger.debug('Sentence: ' + sentence);
@@ -82,3 +82,4 @@ sentences.forEach(function(sentence) {
     logger.debug('No (full) parses of sentence: ' + sentence);
   }
 });
+*/
