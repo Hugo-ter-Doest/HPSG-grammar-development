@@ -21,7 +21,7 @@ var text = fs.readFileSync(signatureFile, 'utf8');
 var signature = chartParsers.SignatureParser.parse(text, {
   implicitTypes:false
 });
-logger.debug(signature.printSpecification());
+logger.debug(signature.printSpecification(true));
 
 /*
 // Load lexicon
